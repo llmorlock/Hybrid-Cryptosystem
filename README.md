@@ -3,6 +3,28 @@
 
 ## Structure
 
+The purpose of this program is to encrypt and decrypt images. Please note that only .bmp images have been tested.
+
+The program will first allow you to choose between encryption and a time trial.
+
+If encryption is chosen, you can select which public algorithm you want to encrypt with, what private algorithm, and what mode of operation.
+You may then choose to use your own image via inputting the path, or use a default image via d1, d2, and d3.
+The program will then proceed to encrypt and decrypt the image for you, showing you both. You may save either by pressing s when they first appear.
+
+If time trial is chosen, you will have the option to choose between running encryption and decryption on 1, 2, or 3 of the test images.
+It will then run and report back the time taken for encryption and decryption on them.
+
+The code is separated into 5 files: Hybrid Crypto Main.cpp is the main driver of the code, dealing with user interaction and calling the encryption objects.
+The other 4 files are header files containing the code for each of the encryption algorithms, which may be called to run as objects.
+
+ElGamal_.h is called by the driver to use a key size of 256 bits, but could be increased in the code.
+
+DES_.h, TripDES_.h, and AES_.h receive their private keys after it has been encrypted by ElGamal, needing 64-, 192- and 256-bit keys, respectively.
+Each private algorithm will divide up the given image into its 3 color channels and change the channels into flat arrays.
+It will then reshape the color arrays to be compatible with the set block size, and then perform encryption and decryption on each block.
+Both the ciphertext and plaintext are saved until the end so that the encrypted and decrypted color channels may be put together to show the encrypted and decrypted images.
+
+
 ## Installation
 
 OpenCV and Crypto++ libraries are required.
